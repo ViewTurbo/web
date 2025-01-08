@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="keywords" content="viewturbo,ViewTurbo">
-    <meta name="description" content="A top-tier network tool that enhances your browsing speed and simplifies access to any sites">
+    <meta name="description"
+        content="A top-tier network tool that enhances your browsing speed and simplifies access to any sites">
     <style>
         body {
             margin: 0;
@@ -23,45 +24,65 @@
 
         #container {
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
         }
 
         #app {
             font-size: 1.5rem;
             margin-bottom: 20px;
-            animation: fadeIn 1.5s ease-in-out;
+            background: linear-gradient(135deg, #ffffff, #ff6f61);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 1.5s ease-in-out, gradientMove 3s infinite linear;
         }
 
         #buttonContainer {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
         }
 
         button {
             width: 160px;
             height: 48px;
-            margin: 10px;
             font-size: 1rem;
             font-weight: bold;
             color: #ffffff;
-            background-color: #1e88e5;
+            background: linear-gradient(135deg, #1e88e5, #005cb2);
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         button:hover {
-            background-color: #005cb2;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, #005cb2, #004494);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
         }
 
         button:active {
-            background-color: #004494;
+            background: linear-gradient(135deg, #004494, #002b6f);
             transform: translateY(0);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-top: 5px solid #ffffff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
         }
 
         @keyframes fadeIn {
@@ -75,18 +96,40 @@
                 transform: translateY(0);
             }
         }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
 
 <body>
     <div id="container">
+        <div id="loader" style="display: none;">
+            <div class="spinner"></div>
+        </div>
         <div id="app">Now Loading the latest site</div>
         <div id="buttonContainer"></div>
     </div>
 
     <script>
         function isHTTPS(url) {
-            // Create a URL object
             var parsedUrl = new URL(url);
             return parsedUrl.protocol === 'https:';
         }
@@ -103,25 +146,21 @@
             var path = window.location.pathname
                 .replace("/OfficialSiteJump", "")
                 .replace("/web", "");
-            if (path == "") {
+            if (path === "") {
                 path = "/";
             }
             window.location.assign(url + path + window.location.search);
         }
 
         async function checkConnection(urllist) {
-
-            // http
             try {
                 for (var i = 0; i < urllist.length; ++i) {
-                    url = urllist[i];
-                    window.console.log(url)
-                    var timeout = 5000;
+                    var url = urllist[i];
+                    console.log(url);
                     const controller = new AbortController();
                     const signal = controller.signal;
 
-                    setTimeout(() => controller.abort(), timeout);
-                    // Check connectivity for URL 1
+                    setTimeout(() => controller.abort(), 5000);
                     const response = await fetch(url, { signal });
                     if (response.ok) {
                         OpenLink(url);
@@ -129,7 +168,7 @@
                     }
                 }
             } catch (error) {
-                window.console.log(error);
+                console.log(error);
             }
             document.getElementById("app").textContent = "Please go to Google to search the latest site";
         }
@@ -137,38 +176,37 @@
         function startCountdown(finished_func) {
             var seconds = 5;
 
-            // Countdown function
+            document.getElementById("loader").style.display = "block";
+
             function countdown() {
-                console.log(seconds);
                 if (seconds > 0) {
-                    setTimeout(countdown, 1000); // Call the countdown function again after 1 second
-                    seconds--;
                     document.getElementById("app").textContent = "Please wait " + seconds + "s";
+                    seconds--;
+                    setTimeout(countdown, 1000);
                 } else {
-                    console.log("Countdown finished");
+                    document.getElementById("loader").style.display = "none";
                     finished_func();
                 }
             }
-
-            // Start the countdown
             countdown();
         }
-        var link1 = "https://web.vtfly.com"
-        var link2 = "https://web.viewturbo.com"
+
+        var link1 = "https://web.vtfly.com";
+        var link2 = "https://web.viewturbo.com";
 
         CreateButton("Address 1", () => { OpenLink(link1); });
         CreateButton("Address 2", () => { OpenLink(link2); });
+
         if (!isHTTPS(window.location.href)) {
             startCountdown(() => {
                 checkConnection([link1, link2]);
-            })
+            });
         } else {
             startCountdown(() => {
                 OpenLink(link1);
-            })
+            });
         }
     </script>
-
 </body>
 
 </html>
