@@ -1,3 +1,3 @@
 # ViewTurbo official site
 
-https://github.com/ViewTurbo/web
+[https://github.io/ViewTurbo/web](https://viewturbo.github.io/web/)
