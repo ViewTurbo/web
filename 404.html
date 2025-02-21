@@ -1,241 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>ViewTurbo</title>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="keywords" content="viewturbo,ViewTurbo" />
-    <meta
-      name="description"
-      content="A top-tier network tool that enhances your browsing speed and simplifies access to any sites"
-    />
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: "Roboto", sans-serif;
-        background: #ffffff;
-        color: #ffffff;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      #loader {
-        display: flex;
-      }
+
+<head>
+  <title>ViewTurbo</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="keywords" content="viewturbo,ViewTurbo" />
+  <meta name="description"
+    content="A top-tier network tool that enhances your browsing speed and simplifies access to any sites" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Roboto", sans-serif;
+      background: #ffffff;
+      color: #ffffff;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #loader {
+      display: flex;
+    }
+
+    #container {
+      display: flex;
+      height: 100%;
+      padding: 20px;
+      margin: 19px;
+      height: 80%;
+      box-shadow: 0px 4px 20px 0px rgb(134 134 134 / 45%);
+      background-image: url("data:image/svg+xml,%3Csvg width='139' height='747' viewBox='0 0 139 747' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.2'%3E%3Cpath d='M67.3197 725.061C67.3197 734.674 63.41 738.584 53.7972 738.584L30.626 738.584C21.0132 738.584 17.1035 734.674 17.1035 725.061L17.1035 681.804C17.1035 672.191 21.0132 668.317 30.626 668.317L53.7972 668.317C63.41 668.317 67.3197 672.191 67.3197 681.804L67.3197 725.061ZM31.451 676.208C25.3892 676.208 24.3131 677.284 24.3131 683.346L24.3131 723.555C24.3131 729.581 25.3892 730.693 31.451 730.693L52.9722 730.693C59.034 730.693 60.1101 729.581 60.1101 723.555L60.1101 683.346C60.1101 677.284 59.034 676.208 52.9722 676.208L31.451 676.208Z' fill='%23C5C5C5'/%3E%3Cpath d='M67.3197 513.944C67.3197 523.557 63.41 527.43 53.7972 527.43L52.1114 527.43C42.4985 527.43 38.6247 523.557 38.6247 513.944L38.6247 504.008L18.2513 529.296L17.1035 529.296L17.1035 519.754L42.2116 488.513L45.7985 488.513L45.7985 512.401C45.7985 518.463 46.9104 519.539 52.9363 519.539L52.9722 519.539C59.034 519.539 60.1101 518.463 60.1101 512.401L60.1101 461.826L67.3197 461.826L67.3197 513.944Z' fill='%23C5C5C5'/%3E%3Cpath d='M17.1035 371.224C17.1035 361.612 21.0132 357.702 30.626 357.702L67.3197 357.702L67.3197 365.593L31.451 365.593C25.3892 365.593 24.3131 366.705 24.3131 372.731L24.3131 410.572C24.3131 416.634 25.3892 417.71 31.451 417.71L67.3197 417.71L67.3197 425.601L30.626 425.601C21.0132 425.601 17.1035 421.728 17.1035 412.115L17.1035 371.224Z' fill='%23C5C5C5'/%3E%3Cpath d='M28.8623 631.01C20.5033 631.01 17.1035 627.588 17.1035 619.175L17.1035 566.556L24.4189 566.556L24.4189 617.999C24.4189 623.305 24.9323 624.7 30.1723 624.7H32.1672C37.4383 624.7 38.5545 623.758 38.5545 618.453L38.5544 567.009H45.2358V619.175C45.2358 627.588 41.8674 631.01 33.5084 631.01H28.8623Z' fill='%23C5C5C5'/%3E%3Cpath d='M50.6648 631.01C42.3058 631.01 38.9061 627.588 38.9061 619.175L38.9061 567.009H45.7679L45.768 618.453C45.768 623.758 46.7349 624.7 51.9748 624.7H53.9697C59.2409 624.7 59.6537 623.758 59.6537 618.453L59.6536 567.009L67.0384 567.009V619.175C67.0384 627.588 63.6699 631.01 55.3109 631.01H50.6648Z' fill='%23C5C5C5'/%3E%3Cpath d='M67.3197 322.431L60.1101 322.431L60.1101 290.471L17.1035 290.471L17.1035 282.58L60.1101 282.58L60.1101 250.621L67.3197 250.621L67.3197 322.431Z' fill='%23C5C5C5'/%3E%3Cpath d='M120.996 376.854L121.896 376.854L121.896 383.353L88.5878 400.063L121.334 417.224L121.334 423.751L120.434 423.751L82.5112 403.777L82.5112 396.322L120.996 376.854Z' fill='%23C5C5C5'/%3E%3Cpath d='M105.017 302.845L105.017 349.12L99.3906 349.12L99.3906 302.845L105.017 302.845ZM82.5112 302.845L88.1658 302.845L88.1658 349.207L82.5112 349.207L82.5112 302.845ZM116.242 302.845L121.896 302.845L121.896 349.12L116.242 349.12L116.242 302.845Z' fill='%23C5C5C5'/%3E%3Cpath d='M121.896 262.641L121.896 268.83L82.5112 268.83L82.5112 262.641L121.896 262.641Z' fill='%23C5C5C5'/%3E%3Cpath d='M121.896 178.808L88.1096 203.677L121.896 228.518L121.896 235.298L120.996 235.298L82.5112 206.715L82.5112 200.582L120.996 172L121.896 172L121.896 178.808Z' fill='%23C5C5C5'/%3E%3C/g%3E%3Cpath d='M83.4115 425.129L82.5112 425.129L82.5112 431.74L120.996 452.052L121.896 452.052L121.896 445.497L83.4115 425.129Z' fill='url(%23paint0_linear_959_154)'/%3E%3Cdefs%3E%3ClinearGradient id='paint0_linear_959_154' x1='121.896' y1='438.591' x2='82.5112' y2='438.591' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%230021D1'/%3E%3Cstop offset='1' stop-color='%2300FFD1'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E%0A");
+      background-size: contain;
+      background-repeat: no-repeat;
+      justify-content: space-between;
+    }
+
+    @media screen and (min-width: 500px) {
       #container {
-        display: flex;
-        height: 100%;
-        padding: 20px;
-        margin: 19px;
-        height: 80%;
-        box-shadow: 0px 4px 20px 0px rgb(134 134 134 / 45%);
-        background-image: url("data:image/svg+xml,%3Csvg width='139' height='747' viewBox='0 0 139 747' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.2'%3E%3Cpath d='M67.3197 725.061C67.3197 734.674 63.41 738.584 53.7972 738.584L30.626 738.584C21.0132 738.584 17.1035 734.674 17.1035 725.061L17.1035 681.804C17.1035 672.191 21.0132 668.317 30.626 668.317L53.7972 668.317C63.41 668.317 67.3197 672.191 67.3197 681.804L67.3197 725.061ZM31.451 676.208C25.3892 676.208 24.3131 677.284 24.3131 683.346L24.3131 723.555C24.3131 729.581 25.3892 730.693 31.451 730.693L52.9722 730.693C59.034 730.693 60.1101 729.581 60.1101 723.555L60.1101 683.346C60.1101 677.284 59.034 676.208 52.9722 676.208L31.451 676.208Z' fill='%23C5C5C5'/%3E%3Cpath d='M67.3197 513.944C67.3197 523.557 63.41 527.43 53.7972 527.43L52.1114 527.43C42.4985 527.43 38.6247 523.557 38.6247 513.944L38.6247 504.008L18.2513 529.296L17.1035 529.296L17.1035 519.754L42.2116 488.513L45.7985 488.513L45.7985 512.401C45.7985 518.463 46.9104 519.539 52.9363 519.539L52.9722 519.539C59.034 519.539 60.1101 518.463 60.1101 512.401L60.1101 461.826L67.3197 461.826L67.3197 513.944Z' fill='%23C5C5C5'/%3E%3Cpath d='M17.1035 371.224C17.1035 361.612 21.0132 357.702 30.626 357.702L67.3197 357.702L67.3197 365.593L31.451 365.593C25.3892 365.593 24.3131 366.705 24.3131 372.731L24.3131 410.572C24.3131 416.634 25.3892 417.71 31.451 417.71L67.3197 417.71L67.3197 425.601L30.626 425.601C21.0132 425.601 17.1035 421.728 17.1035 412.115L17.1035 371.224Z' fill='%23C5C5C5'/%3E%3Cpath d='M28.8623 631.01C20.5033 631.01 17.1035 627.588 17.1035 619.175L17.1035 566.556L24.4189 566.556L24.4189 617.999C24.4189 623.305 24.9323 624.7 30.1723 624.7H32.1672C37.4383 624.7 38.5545 623.758 38.5545 618.453L38.5544 567.009H45.2358V619.175C45.2358 627.588 41.8674 631.01 33.5084 631.01H28.8623Z' fill='%23C5C5C5'/%3E%3Cpath d='M50.6648 631.01C42.3058 631.01 38.9061 627.588 38.9061 619.175L38.9061 567.009H45.7679L45.768 618.453C45.768 623.758 46.7349 624.7 51.9748 624.7H53.9697C59.2409 624.7 59.6537 623.758 59.6537 618.453L59.6536 567.009L67.0384 567.009V619.175C67.0384 627.588 63.6699 631.01 55.3109 631.01H50.6648Z' fill='%23C5C5C5'/%3E%3Cpath d='M67.3197 322.431L60.1101 322.431L60.1101 290.471L17.1035 290.471L17.1035 282.58L60.1101 282.58L60.1101 250.621L67.3197 250.621L67.3197 322.431Z' fill='%23C5C5C5'/%3E%3Cpath d='M120.996 376.854L121.896 376.854L121.896 383.353L88.5878 400.063L121.334 417.224L121.334 423.751L120.434 423.751L82.5112 403.777L82.5112 396.322L120.996 376.854Z' fill='%23C5C5C5'/%3E%3Cpath d='M105.017 302.845L105.017 349.12L99.3906 349.12L99.3906 302.845L105.017 302.845ZM82.5112 302.845L88.1658 302.845L88.1658 349.207L82.5112 349.207L82.5112 302.845ZM116.242 302.845L121.896 302.845L121.896 349.12L116.242 349.12L116.242 302.845Z' fill='%23C5C5C5'/%3E%3Cpath d='M121.896 262.641L121.896 268.83L82.5112 268.83L82.5112 262.641L121.896 262.641Z' fill='%23C5C5C5'/%3E%3Cpath d='M121.896 178.808L88.1096 203.677L121.896 228.518L121.896 235.298L120.996 235.298L82.5112 206.715L82.5112 200.582L120.996 172L121.896 172L121.896 178.808Z' fill='%23C5C5C5'/%3E%3C/g%3E%3Cpath d='M83.4115 425.129L82.5112 425.129L82.5112 431.74L120.996 452.052L121.896 452.052L121.896 445.497L83.4115 425.129Z' fill='url(%23paint0_linear_959_154)'/%3E%3Cdefs%3E%3ClinearGradient id='paint0_linear_959_154' x1='121.896' y1='438.591' x2='82.5112' y2='438.591' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%230021D1'/%3E%3Cstop offset='1' stop-color='%2300FFD1'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E%0A");
-        background-size: contain;
-        background-repeat: no-repeat;
-        justify-content: space-between;
+        min-width: 400px;
       }
-      @media screen and (min-width: 500px) {
-        #container {
-          min-width: 400px;
-        }
-      }
-      #app {
-        font-size: 1.5rem;
-        color: #000000;
-        font-weight: bold;
-      }
-      .app-layout h1 {
-        color: #000;
-        font-size: 29px;
-        margin: 0;
-      }
-      #buttonContainer {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        flex-direction: column;
-        min-width: 130px;
-        gap: 15px;
-        justify-content: flex-end;
-        margin-top: 20px;
+    }
+
+    #app {
+      font-size: 1.5rem;
+      color: #000000;
+      font-weight: bold;
+    }
+
+    .app-layout h1 {
+      color: #000;
+      font-size: 29px;
+      margin: 0;
+    }
+
+    #buttonContainer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      flex-direction: column;
+      min-width: 130px;
+      gap: 15px;
+      justify-content: flex-end;
+      margin-top: 20px;
+    }
+
+    button {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #ffffff;
+      border: none;
+      background: #013fff;
+      min-width: 90px;
+      cursor: pointer;
+      border-top: 1px solid #ffffff;
+      padding: 20px;
+      transition: all 0.3sease;
+      margin-bottom: -20px;
+      transition: opacity 0.3s ease-out;
+    }
+
+    button:hover {
+      opacity: 0.7;
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #0034ff;
+      border-top: 5px solid #ffffff;
+      border-radius: 50%;
+      box-shadow: 0px 4px 20px 20px #0034ff33;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(10px);
       }
 
-      button {
-        font-size: 1rem;
-        font-weight: bold;
-        color: #ffffff;
-        border: none;
-        background: #013fff;
-        min-width: 90px;
-        cursor: pointer;
-        border-top: 1px solid #ffffff;
-        padding: 20px;
-        transition: all 0.3sease;
-        margin-bottom: -20px;
-        transition: opacity 0.3s ease-out;
+      100% {
+        opacity: 1;
+        transform: translateY(0);
       }
-      button:hover {
-        opacity: 0.7;
-      }
-      .spinner {
-        width: 50px;
-        height: 50px;
-        border: 5px solid #0034ff;
-        border-top: 5px solid #ffffff;
-        border-radius: 50%;
-        box-shadow: 0px 4px 20px 20px #0034ff33;
-        animation: spin 1s linear infinite;
-        margin-bottom: 20px;
+    }
+
+    @keyframes gradientMove {
+      0% {
+        background-position: 0% 50%;
       }
 
-      @keyframes fadeIn {
-        0% {
-          opacity: 0;
-          transform: translateY(10px);
-        }
+      100% {
+        background-position: 100% 50%;
+      }
+    }
 
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
       }
 
-      @keyframes gradientMove {
-        0% {
-          background-position: 0% 50%;
-        }
-
-        100% {
-          background-position: 100% 50%;
-        }
+      100% {
+        transform: rotate(360deg);
       }
+    }
+  </style>
+</head>
 
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
-        }
-
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-    </style>
-  </head>
-
-  <body>
-    <div id="container">
-      <div id="loader" style="display: none">
-        <div class="spinner"></div>
-        <div class="app-layout">
-          <h1>Welcome to</h1>
-          <div id="app">Now Loading the latest site</div>
-        </div>
+<body>
+  <div id="container">
+    <div id="loader" style="display: none">
+      <div class="spinner"></div>
+      <div class="app-layout">
+        <h1>Welcome to</h1>
+        <div id="app">Now Loading the latest site</div>
       </div>
-      <div id="buttonContainer"></div>
     </div>
+    <div id="buttonContainer"></div>
+  </div>
 
-    <script>
-      function isHTTPS(url) {
-        var parsedUrl = new URL(url);
-        return parsedUrl.protocol === "https:";
+  <script>
+    function isHTTPS(url) {
+      var parsedUrl = new URL(url);
+      return parsedUrl.protocol === "https:";
+    }
+
+    function CreateButton(button_text, open_func) {
+      var button = document.createElement("button");
+      button.innerHTML = button_text;
+      button.addEventListener("click", open_func);
+      var container = document.getElementById("buttonContainer");
+      container.appendChild(button);
+    }
+
+    function OpenLink(url) {
+      if (window.location.href.indexOf("apple.") != -1) {
+        window.location.assign(
+          url +
+          "/register?share_id=a0873ac0-c932-447b-b9dd-b3327696aeb9&lang=zh"
+        );
+        return;
+      } else if (window.location.href.indexOf("banana.") != -1) {
+        window.location.assign(
+          url +
+          "/register?share_id=aef16960-bfda-4ccd-916e-7a66330730d1&lang=zh"
+        );
+        return;
       }
 
-      function CreateButton(button_text, open_func) {
-        var button = document.createElement("button");
-        button.innerHTML = button_text;
-        button.addEventListener("click", open_func);
-        var container = document.getElementById("buttonContainer");
-        container.appendChild(button);
+      var path = window.location.pathname
+        .replace("/OfficialSiteJump", "")
+        .replace("/web", "");
+      if (path === "") {
+        path = "/";
       }
 
-      function OpenLink(url) {
-        if (window.location.href.indexOf("apple.") != -1) {
-          window.location.assign(
-            url +
-              "/register?share_id=a0873ac0-c932-447b-b9dd-b3327696aeb9&lang=zh"
-          );
-          return;
-        } else if (window.location.href.indexOf("banana.") != -1) {
-          window.location.assign(
-            url +
-              "/register?share_id=aef16960-bfda-4ccd-916e-7a66330730d1&lang=zh"
-          );
-          return;
-        }
+      window.location.assign(url + path + window.location.search);
+    }
 
-        var path = window.location.pathname
-          .replace("/OfficialSiteJump", "")
-          .replace("/web", "");
-        if (path === "") {
-          path = "/";
-        }
+    async function checkConnection(urllist) {
+      try {
+        for (var i = 0; i < urllist.length; ++i) {
+          var url = urllist[i];
+          console.log(url);
+          const controller = new AbortController();
+          const signal = controller.signal;
 
-        window.location.assign(url + path + window.location.search);
-      }
-
-      async function checkConnection(urllist) {
-        try {
-          for (var i = 0; i < urllist.length; ++i) {
-            var url = urllist[i];
-            console.log(url);
-            const controller = new AbortController();
-            const signal = controller.signal;
-
-            setTimeout(() => controller.abort(), 5000);
-            const response = await fetch(url, { signal });
-            if (response.ok) {
-              OpenLink(url);
-              return;
-            }
-          }
-        } catch (error) {
-          console.log(error);
-        }
-        document.getElementById("app").textContent =
-          "Please go to Google to search the latest site";
-      }
-
-      function startCountdown(finished_func) {
-        var seconds = 5;
-
-        document.getElementById("loader").style.display = "block";
-
-        function countdown() {
-          if (seconds > 0) {
-            document.getElementById("app").textContent =
-              "ViewTurbo " + seconds + "s";
-            seconds--;
-            setTimeout(countdown, 1000);
-          } else {
-            document.getElementById("loader").style.display = "none";
-            finished_func();
+          setTimeout(() => controller.abort(), 5000);
+          const response = await fetch(url, { signal });
+          if (response.ok) {
+            OpenLink(url);
+            return;
           }
         }
-        countdown();
+      } catch (error) {
+        console.log(error);
       }
+      document.getElementById("app").textContent =
+        "Please go to Google to search the latest site";
+    }
 
-      var link1 = "https://web.vtfly.com";
-      var link2 = "https://web.viewturbo.com";
+    function startCountdown(finished_func) {
+      var seconds = 5;
 
-      CreateButton("Address 1", () => {
+      document.getElementById("loader").style.display = "block";
+
+      function countdown() {
+        if (seconds > 0) {
+          document.getElementById("app").textContent =
+            "ViewTurbo " + seconds + "s";
+          seconds--;
+          setTimeout(countdown, 1000);
+        } else {
+          document.getElementById("loader").style.visibility = "hidden";
+          finished_func();
+        }
+      }
+      countdown();
+    }
+
+    var link1 = "https://web.vtfly.com";
+    var link2 = "https://web.viewturbo.com";
+
+    CreateButton("Address 1", () => {
+      OpenLink(link1);
+    });
+    CreateButton("Address 2", () => {
+      OpenLink(link2);
+    });
+
+    if (!isHTTPS(window.location.href)) {
+      startCountdown(() => {
+        checkConnection([link1, link2]);
+      });
+    } else {
+      startCountdown(() => {
         OpenLink(link1);
       });
-      CreateButton("Address 2", () => {
-        OpenLink(link2);
-      });
+    }
+  </script>
+</body>
 
-      if (!isHTTPS(window.location.href)) {
-        startCountdown(() => {
-          checkConnection([link1, link2]);
-        });
-      } else {
-        startCountdown(() => {
-          OpenLink(link1);
-        });
-      }
-    </script>
-  </body>
 </html>
