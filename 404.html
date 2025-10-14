@@ -183,20 +183,17 @@
       window.location.assign(url + path + window.location.search);
     }
 
-    async function checkConnection(urllist) {
+    async function checkConnection(link) {
       try {
-        for (var i = 0; i < urllist.length; ++i) {
-          var url = urllist[i];
-          console.log(url);
-          const controller = new AbortController();
-          const signal = controller.signal;
+        console.log(link);
+        const controller = new AbortController();
+        const signal = controller.signal;
 
-          setTimeout(() => controller.abort(), 5000);
-          const response = await fetch(url, { signal });
-          if (response.ok) {
-            OpenLink(url);
-            return;
-          }
+        setTimeout(() => controller.abort(), 5000);
+        const response = await fetch(link, { signal });
+        if (response.ok) {
+          OpenLink(link);
+          return;
         }
       } catch (error) {
         console.log(error);
@@ -224,8 +221,8 @@
       countdown();
     }
 
-    var link1 = "https://web.vtfly.com";
-    var link2 = "https://web.viewturbo.com";
+    var link1 = "https://web.vtpro.xyz";
+    var link2 = "https://web.viewturbo.net";
 
     CreateButton("Address 1", () => {
       OpenLink(link1);
@@ -234,15 +231,13 @@
       OpenLink(link2);
     });
 
-    if (!isHTTPS(window.location.href)) {
-      startCountdown(() => {
-        checkConnection([link1, link2]);
-      });
-    } else {
-      startCountdown(() => {
-        OpenLink(link1);
-      });
-    }
+    startCountdown(() => {
+      // if (!isHTTPS(window.location.href)) {
+      // }
+      for (var link of [link1, link2]) {
+        checkConnection(link);
+      }
+    });
   </script>
 </body>
 
