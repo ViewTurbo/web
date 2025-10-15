@@ -193,13 +193,14 @@
         const response = await fetch(link, { signal });
         if (response.ok) {
           OpenLink(link);
-          return;
+          return true;
         }
       } catch (error) {
         console.log(error);
       }
       document.getElementById("app").textContent =
         "Please go to Google to search the latest site";
+      return false;
     }
 
     function startCountdown(finished_func) {
@@ -231,11 +232,12 @@
       OpenLink(link2);
     });
 
-    startCountdown(() => {
-      // if (!isHTTPS(window.location.href)) {
-      // }
+    startCountdown(async () => {
       for (var link of [link1, link2]) {
-        checkConnection(link);
+        var result = await checkConnection(link);
+        if (result) {
+          break;
+        }
       }
     });
   </script>
