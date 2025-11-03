@@ -198,12 +198,11 @@
       } catch (error) {
         console.log(error);
       }
-      document.getElementById("app").textContent =
-        "Please go to Google to search the latest site";
+
       return false;
     }
 
-    function startCountdown(finished_func) {
+    function startCountdown() {
       var seconds = 5;
 
       document.getElementById("loader").style.display = "block";
@@ -216,7 +215,7 @@
           setTimeout(countdown, 1000);
         } else {
           document.getElementById("loader").style.visibility = "hidden";
-          finished_func();
+
         }
       }
       countdown();
@@ -232,14 +231,24 @@
       OpenLink(link2);
     });
 
-    startCountdown(async () => {
+    startCountdown();
+
+    var checkLinks = async () => {
+      var find = false;
       for (var link of [link1, link2]) {
         var result = await checkConnection(link);
         if (result) {
+          find = true;
           break;
         }
       }
-    });
+
+      if (!find) {
+        document.getElementById("app").textContent =
+          "Please go to Google to search the latest site";
+      }
+    };
+    checkLinks();
   </script>
 </body>
 
